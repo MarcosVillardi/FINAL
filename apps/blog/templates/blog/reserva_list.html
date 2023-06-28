@@ -1,0 +1,20 @@
+{% extends 'home/base.html' %}
+{% block header %}
+    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">    
+        <h1 class="fw-bolder">Lista de Reservas</h1>
+    </div>
+{% endblock  %}
+{% block content %}
+    {% for reserva in reservas %}
+        <ul>
+            <p class="d-grid text-bg-dark">Nombre:</p><li>{{ reserva.nombre }}</li>
+            <p class="d-grid text-bg-dark">Apellido:</p><li>{{ reserva.apellido }}</li>    
+            <p class="d-grid text-bg-dark">DNI:</p><li>{{ reserva.dni }}</li>
+            <p class="d-grid text-bg-dark">Fecha de llegada:</p><li>{{ reserva.fecha_llegada }}</li>
+            <p class="d-grid text-bg-dark">Fecha de salida:</p><li>{{ reserva.fecha_salida }}</li>
+            <p class="d-grid text-bg-dark">Número de habitación:</p><li>{{ reserva.numero_habitacion }}</li>
+        </ul>    
+    {% endfor %}
+
+
+{% endblock %}
