@@ -1,10 +1,27 @@
 {% extends 'home/base.html' %}
-
+{% load static %}
+{% block header %}
+    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">    
+        <h1 class="fw-bolder">Obtener un espacio en el garaje</h1>
+    </div>
+{% endblock  %}
 {% block content %}
-    <form style="text-align:center" action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-outline-success">Reservar Garaje</button>
-    </form>
-        
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div>
+                    <form class="django-form"  action="" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <p class="d-grid"><button type="submit" class="btn btn-outline-success">Reservar</button></p>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-right">
+                    <img src="{% static 'blog/img/garaje.jpg' %}" width="700" height="550" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

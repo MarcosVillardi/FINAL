@@ -1,9 +1,26 @@
 {% extends 'home/base.html' %}
-
+{% block header %}
+<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">    
+    <h1 class="fw-bolder">Confirmacion de borrado</h1>
+</div>
+{% endblock  %}
 {% block content %}
-    <h1>¿Estás seguro que quieres eliminar {{ object }} ?</h1>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-outline-danger">Eliminar</button>
-    </form>
+    <h1 class="">¿Estás seguro que quieres eliminar el auto: {{ object.marca }} {{ object.modelo }}?</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <p class="d-grid"><button type="submit" class="btn btn-outline-danger">Eliminar</button></p>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-right">
+                    <p class="d-grid"><a class="btn btn-outline-success" href="{% url 'blog:garaje_list' %}">Regresar</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

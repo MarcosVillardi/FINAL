@@ -5,16 +5,26 @@
     </div>
 {% endblock  %}
 {% block content %}
-    {% for reserva in reservas %}
-        <ul>
-            <p class="d-grid text-bg-dark">Nombre:</p><li>{{ reserva.nombre }}</li>
-            <p class="d-grid text-bg-dark">Apellido:</p><li>{{ reserva.apellido }}</li>    
-            <p class="d-grid text-bg-dark">DNI:</p><li>{{ reserva.dni }}</li>
-            <p class="d-grid text-bg-dark">Fecha de llegada:</p><li>{{ reserva.fecha_llegada }}</li>
-            <p class="d-grid text-bg-dark">Fecha de salida:</p><li>{{ reserva.fecha_salida }}</li>
-            <p class="d-grid text-bg-dark">Número de habitación:</p><li>{{ reserva.numero_habitacion }}</li>
-        </ul>    
-    {% endfor %}
-
-
+    <div>
+        {% for reserva in reservas %}
+            <div>
+                <h3 class="text-bg-dark">
+                    {{ reserva.nombre }} {{ reserva.apellido }} 
+                    {% if user.is_staff %}
+                     <a class="btn btn-outline-danger" href="{% url 'blog:reserva_delete' reserva.id %}">Eliminar</a>
+                     <a class="btn btn-outline-info" href="{% url 'blog:reserva_update' reserva.id %}">Editar</a>
+                    {% endif %}
+                </h3>
+                <ul>
+                    <li><strong><u>DNI:</u></strong> {{ reserva.dni }}</li>
+                    <li><strong><u>Fecha de llegada:</u></strong> {{ reserva.fecha_llegada }}</li>
+                    <li><strong><u>Fecha de salida:</u></strong> {{ reserva.fecha_salida }}</li>
+                    <li><strong><u>Número de habitación:</u></strong> {{ reserva.numero_habitacion }}</li>
+                    {% if reserva.comentarios %}
+                        <li><strong style="color: red;"><u>Comentarios:</u></strong> {{ reserva.comentarios }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

@@ -12,7 +12,5 @@
 {% endif %}
 {% if user.is_staff %}
     <h1 class=" d-grid"><a class="btn btn-outline-success" href="{% url 'blog:garaje_create' %}">Create</a></h1>
-    <h1 class=" d-grid"><a class="btn btn-outline-info" href="{% url 'blog:garaje_update' %}">Update</a></h1>
-    <h1 class=" d-grid"><a class="btn btn-outline-danger" href="{% url 'blog:garaje_delete' %}">Delete</a></h1>
 {% endif %}
 {% endblock  %}

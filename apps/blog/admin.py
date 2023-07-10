@@ -9,6 +9,6 @@ class ReservaAdmin(admin.ModelAdmin):
 
 @admin.register(models.Garaje)
 class GarajeAdmin(admin.ModelAdmin):
-    list_display = ('nombre','titular','direccion','capacidad','patente','modelo','comentarios')
+    list_display = ('nombre','titular','marca','capacidad','patente','modelo','comentarios')
     search_fields = ('titular','modelo')
     ordering = ("patente",)

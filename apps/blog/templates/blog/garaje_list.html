@@ -1,15 +1,29 @@
 {% extends 'home/base.html' %}
-
+{% block header %}
+    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">    
+        <h1 class="fw-bolder">Lista de Autos en el Garaje</h1>
+    </div>
+{% endblock  %}
 {% block content %}
-    <h1>Autos en el Garaje</h1>
-    {% for garaje in garajes %}
-        <ul>
-            <li>
-                {{ garaje }}
-            </li>
-        </ul>    
-            
-    {% endfor %}
-
-
+    <div>
+        {% for garaje in garajes %}
+            <div>
+                <h3 class="text-bg-dark"> 
+                    Marca: {{ garaje.marca }}| Modelo: {{ garaje.modelo }}| Patente: {{ garaje.patente }}
+                    {% if user.is_staff %}
+                     <a class="btn btn-outline-danger" href="{% url 'blog:garaje_delete' garaje.id %}">Eliminar</a>
+                     <a class="btn btn-outline-info" href="{% url 'blog:garaje_update' garaje.id %}">Editar</a>
+                    {% endif %}
+                </h3>
+                <ul>
+                    <li><strong><u>Nombre:</u></strong> {{ garaje.nombre }}</li>
+                    <li><strong><u>Titular:</u></strong> {{ garaje.titular }}</li>
+                    <li><strong><u>Capacidad</u></strong> {{ garaje.capacidad }}</li>
+                    {% if garaje.comentarios %}
+                        <li><strong style="color: red;"><u>Comentarios:</u></strong> {{ garaje.comentarios }}</li>
+                    {% endif %}
+                </ul>            
+            </div>
+        {% endfor %}
+    </div>    
 {% endblock %}

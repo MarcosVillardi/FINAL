@@ -12,12 +12,12 @@ class Reserva(models.Model):
         verbose_name = 'Reserva'
         verbose_name_plural = 'Reservas'
     def __str__(self):
-        return f"nombre: {self.nombre},apellido: {self.apellido},DNI: {self.dni},fecha_llegada: {self.fecha_llegada},fecha_salida: {self.fecha_salida},numero_habitacion: {self.numero_habitacion}"
+        return f"nombre: {self.nombre},apellido: {self.apellido},DNI: {self.dni},fecha_llegada: {self.fecha_llegada},fecha_salida: {self.fecha_salida},numero_habitacion: {self.numero_habitacion} ,comentarios: {self.comentarios}"
     
 class Garaje(models.Model):
     nombre = models.CharField(max_length=50)
     titular = models.CharField(max_length=50)
-    direccion = models.CharField(max_length=50)
+    marca = models.CharField(max_length=50)
     capacidad = models.PositiveSmallIntegerField()
     patente = models.CharField(max_length=50)
     modelo = models.CharField(max_length=50)
@@ -26,4 +26,4 @@ class Garaje(models.Model):
         verbose_name = 'Garaje'
         verbose_name_plural = 'Garajes'
     def __str__(self):
-        return self.nombre, self.titular, self.direccion, self.capacidad, self.patente, self.modelo
+        return f"nombre: {self.nombre},titular: {self.titular},marca: {self.marca},capacidad: {self.capacidad},patente: {self.patente},modelo: {self.modelo} ,comentarios: {self.comentarios}"
